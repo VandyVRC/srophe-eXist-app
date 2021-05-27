@@ -33,7 +33,7 @@ body {font-family: arial, sans-serif; background-color:#fff; }
   vertical-align:top;
 }
 .keywords .featured-images {
-    max-width:400px;
+/*    max-width:400px;*/
     background-color:white;
     border:none;
 } 
@@ -1162,6 +1162,7 @@ img#arch-sinic-about {
   clear:left;
   display:block;
   text-align: center; 
+  max-width:400px;
 /*  margin-top: -2.5em;*/
 }
 
