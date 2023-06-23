@@ -7,7 +7,7 @@ xquery version "3.1";
 module namespace app="http://srophe.org/srophe/templates";
 
 (:eXist templating module:)
-import module namespace templates="http://exist-db.org/xquery/templates" ;
+import module namespace templates="http://exist-db.org/xquery/html-templating";
 
 (: Import Srophe application modules. :)
 import module namespace config="http://srophe.org/srophe/config" at "config.xqm";
@@ -55,7 +55,9 @@ function app:logo($node as node(), $model as map(*)) {
  : @param $node the HTML node with the attribute which triggered this call
  : @param $model a map containing arbitrary data - used to pass information between template calls
  :)
-declare function app:get-work($node as node(), $model as map(*)) {
+declare
+    %templates:wrap
+function app:get-work($node as node(), $model as map(*)) {
     if(request:get-parameter('id', '') != '' or request:get-parameter('doc', '') != '') then
         let $id := concat(request:get-parameter('id', ''),'/tei')
         let $rec := data:get-document($id)
