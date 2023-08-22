@@ -21,6 +21,6 @@ return
     githubxq:execute-webhook($data, 
         '/db/apps/tcadrt',
         'https://github.com/VandyVRC/srophe-eXist-app',
-        'master',
+        'main',
         '${SECRET_KEY}',
         '')

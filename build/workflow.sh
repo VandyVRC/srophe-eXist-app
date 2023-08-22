@@ -1,6 +1,14 @@
 GITHUB_ORG="VandyVRC"
 GITHUB_REPOSITORY="tcadrt"
 
+rm -rf autodeploy
+# create an autodeploy folder
+mkdir autodeploy
+
+echo "Running app build ..."
+ant
+echo "Ran app build successfully"
+
 echo "Fetching the data repository to build a data xar"
 git clone https://github.com/$GITHUB_ORG/$GITHUB_REPOSITORY
 
@@ -13,13 +21,13 @@ echo "Ran data build successfully"
 
 cd ..
 # remove any old auto deploy
-rm -rf autodeploy
+#rm -rf autodeploy
 # create an autodeploy folder
-mkdir autodeploy
+#mkdir autodeploy
 
-echo "Running app build ..."
-ant
-echo "Ran app build successfully"
+#echo "Running app build ..."
+#ant
+#echo "Ran app build successfully"
 
 
 # move the xar from build to autodeploy
