@@ -1,0 +1,19 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div data-template="app:fix-links" class="record">
+        <div class="main-content-block white">
+            <div data-template="app:h1"/>
+            <div data-template="app:other-data-formats" data-template-formats="mirador,print,tei,rdf"/>
+            <div class="row">
+                <!-- Column 1 -->
+                <div class="col-md-7 column1">
+                    <div data-template="app:display-nodes" data-template-paths="/descendant::tei:TEI"/>
+                </div>
+                <!-- Column 2 -->
+                <div class="col-md-5 column2">
+                    <div data-template="app:internal-relationships" data-template-relationship-type="keyword" data-template-display="list-description" data-template-label="Annotations"/>
+<!--                    <div data-template="app:external-relationships" data-template-relationship-type="image" data-template-display="list-description" data-template-label="Annotations"/>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

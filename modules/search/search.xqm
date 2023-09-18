@@ -42,11 +42,11 @@ declare variable $search:perpage {
  : Search results stored in map for use by other HTML display functions
  : Updated for Architectura Sinica to display full list if no search terms
 :)
-declare %templates:wrap function search:search-data($node as node(), $model as map(*), $collection as xs:string?, $sort-element as xs:string*){
+declare %templates:wrap function search:search-data($node as node(), $model as map(*), $collection as xs:string?, $sort-element as xs:string?){
     let $queryExpr := search:query-string($collection)     
     let $hits := if($queryExpr != '') then 
-                     data:search($collection, $queryExpr,$sort-element[1])
-                 else data:search($collection, '',$sort-element[1])
+                     data:search($collection, $queryExpr,$sort-element)
+                 else data:search($collection, '',$sort-element)
     let $sites := for $h in $hits[.//tei:place[@type='site']]
                   let $s := ft:field($h, "title")[1]                
                   order by $s[1] collation 'http://www.w3.org/2013/collation/UCA'
@@ -73,10 +73,10 @@ function search:show-hits($node as node()*, $model as map(*), $collection as xs:
                 if(count($model("sites")) = 0 and count($model("hits")) != 0) then
                     for $hit at $p in subsequence($model("hits"), $search:start, $search:perpage)
                     let $idno := replace($hit/descendant::tei:idno[1],'/tei','')
-                    let $title := $hit/descendant::tei:title[1]/text()
+                    let $title := tei2html:tei2html($hit/descendant::tei:title[1])
                     let $siteIdno := $hit/descendant::tei:relation[@ref="schema:containedInPlace"]/@passive
                     let $site := $model("allSites")[descendant::tei:idno[.= $siteIdno]][1]
-                    let $siteTitle := $hit[1]/descendant::tei:title[1]/text()
+                    let $siteTitle := $hit[1]/descendant::tei:title[1]
                     group by $facet-grp-p := $siteIdno[1]
                     order by $siteTitle[1]
                     return 
@@ -84,7 +84,7 @@ function search:show-hits($node as node()*, $model as map(*), $collection as xs:
                             <a class="togglelink text-info" 
                                     data-toggle="collapse" data-target="#show{$facet-grp-p}" 
                                     href="#show{$facet-grp-p}" data-text-swap=" + "> - </a>&#160; 
-                                    <a href="{replace($idno[1],$config:base-uri,$config:nav-base)}">{$siteTitle[1]}</a> (contains {count($hit)} artifact(s))
+                                    <a href="{replace($idno[1],$config:base-uri,$config:nav-base)}">{tei2html:tei2html($siteTitle[1])}</a> (contains {count($hit)} artifact(s))
                                     <div class="indent collapse in" style="background-color:#F7F7F9;" id="show{$facet-grp-p}">{
                                         for $p in $hit
                                         let $id := replace($p/descendant::tei:idno[1],'/tei','')
@@ -95,7 +95,7 @@ function search:show-hits($node as node()*, $model as map(*), $collection as xs:
                 else 
                     let $hits := $model("sites") 
                     for $hit at $p in subsequence($hits, $search:start, $search:perpage)
-                    let $title := $hit/descendant::tei:title[1]/text()
+                    let $title := $hit/descendant::tei:title[1]
                     let $idno := replace($hit/descendant::tei:idno[1],'/tei','') 
                     let $children := 
                        (:$model("hits")//tei:TEI[.//tei:relation[@passive = $idno][@ref="schema:containedInPlace"]]:)
@@ -103,7 +103,7 @@ function search:show-hits($node as node()*, $model as map(*), $collection as xs:
                     return 
                         <div class="indent" xmlns="http://www.w3.org/1999/xhtml" style="margin-bottom:1em;">
                             <a class="togglelink text-info" data-toggle="collapse" data-target="#show{$idno}" href="#show{$idno}" data-text-swap=" + "> - </a>&#160; 
-                            <a href="{replace($idno,$config:base-uri,$config:nav-base)}">{$title}</a> (contains {count($children)} artifact(s))
+                            <a href="{replace($idno,$config:base-uri,$config:nav-base)}">{tei2html:tei2html($title)}</a> (contains {count($children)} artifact(s))
                             <div class="indent collapse in" style="background-color:#F7F7F9;" id="show{$idno}">{
                                 for $p in $children
                                 let $id := replace($p/descendant::tei:idno[1],'/tei','')
@@ -145,9 +145,11 @@ declare %templates:wrap function search:architectural-features($node as node()*,
                 <h4 class="indent">{string($group-type)}</h4>
                 {
                     for $f in $feature
-                    let $title := string-join($f/descendant::tei:titleStmt/tei:title[1]//text(),' ')
+                    let $title-en := $f/descendant::tei:entryFree/tei:term[@xml:lang='zh-latn-pinyin'][not(@type='alternate')][1]/text()
+                    let $title-zh := $f/descendant::tei:entryFree/tei:term[@xml:lang='zh-Hant'][1]/text()
+                    let $title := concat($title-en, ' ', $title-zh)
                     let $id := replace($f/descendant::tei:idno[1],'/tei','')
-                    order by $title descending
+                    order by $title-en ascending collation 'http://www.w3.org/2013/collation/UCA'
                     return 
                         <div class="form-group row">
                             <div class="col-sm-4 col-md-3" style="text-align:right;">

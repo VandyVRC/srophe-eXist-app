@@ -11,7 +11,7 @@
         <!-- Web Site URL -->
         <url>https://architecturasinica.org/</url>
         <!-- Root of app for building dynamic links. Default is eXist app root -->
-        <nav-base></nav-base>
+        <nav-base>/exist/apps/tcadrt</nav-base>
         <!-- eXist app root for app deployment-->
         <app-root>tcadrt</app-root>
         <!-- eXist data app root for gazetteer data -->
@@ -49,6 +49,7 @@
             <collection name="bibl" title="Bibliography" app-root="/bibl/" data-root="bibl" record-URI-pattern="https://architecturasinica.org/bibl/"/>
             <collection name="sites" app-root="/geo/" data-root="places/sites" record-URI-pattern="https://architecturasinica.org/place/"/>
             <collection name="buildings" app-root="/geo/" data-root="places/buildings" record-URI-pattern="https://architecturasinica.org/place/"/>
+            <collection name="images" app-root="/images/" data-root="images" record-URI-pattern="https://architecturasinica.org/image/"/>
         </collections>
         
         <google_analytics>var _gaq=[['_setAccount',''],['_trackPageview']];

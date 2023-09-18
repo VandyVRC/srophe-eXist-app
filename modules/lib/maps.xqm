@@ -42,7 +42,7 @@ declare function maps:build-leaflet-map($nodes as node()*, $total-count as xs:in
                                 
             var imperium = L.tileLayer(
                     'https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png', {
-                        maxZoom: 10,
+                        maxZoom: 18,
                         attribution: 'Powered by <a href="http://leafletjs.com/">Leaflet</a>. Map base: <a href="https://dh.gu.se/dare/" title="Digital Atlas of the Roman Empire, Department of Archaeology and Ancient History, Lund University, Sweden">DARE</a>, 2015 (cc-by-sa).'
                     });
                                 
@@ -96,7 +96,7 @@ declare function maps:build-leaflet-map($nodes as node()*, $total-count as xs:in
                                  }               
                                 }
                             })
-        var map = L.map('map').fitBounds(geojson.getBounds(),{maxZoom: 5});     
+        var map = L.map('map').fitBounds(geojson.getBounds(),{maxZoom: 18});     
         terrain.addTo(map);
                                         
         L.control.layers({

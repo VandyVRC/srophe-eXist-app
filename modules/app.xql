@@ -171,7 +171,13 @@ return
             {
                 for $f in tokenize($formats,',')
                 return 
-                    if($f = 'geojson') then
+                    if($f = 'mirador') then 
+                        if($model("hits")/descendant::tei:relation[@ref="manifest"]) then
+                            (<a href="https://projectmirador.org/embed/?iiif-content={$model("hits")/descendant::tei:relation[@ref="manifest"]/@active}" class="btn btn-default btn-xs" id="geoBtn" data-toggle="tooltip" title="Click to view the GeoJSON data for this record." >
+                                 <img src="{$config:nav-base}/resources/images/mirador-logo.svg" alt="Mirador logo" height="18px"/> Mirador
+                            </a>, '&#160;')
+                        else ()
+                    else if($f = 'geojson') then
                         if($model("hits")/descendant::tei:location/tei:geo) then 
                             (<a href="{concat(replace($id,$config:base-uri,$config:nav-base),'.geojson')}" class="btn btn-default btn-xs" id="geoBtn" data-toggle="tooltip" title="Click to view the GeoJSON data for this record." >
                                  <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> GeoJSON

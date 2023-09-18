@@ -352,6 +352,12 @@
             <xsl:call-template name="sources"/>
         </xsl:if>
     </xsl:template>
+    <xsl:template match="t:body[t:listObject]">
+        <xsl:apply-templates select="t:listObject"/>
+        <xsl:if test="t:bibl or t:listBibl">
+            <xsl:call-template name="sources"/>
+        </xsl:if>
+    </xsl:template>
     
     <!-- C -->
     <xsl:template name="citationInfo">
@@ -459,7 +465,15 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
+    <xsl:template match="t:listObject">
+        <xsl:if test="//t:objectIdentifier/t:idno[@type='iiif']">
+            <div class="iiif-image">
+                <img src="{//t:objectIdentifier/t:idno[@type='iiif']}" alt="{//t:objectIdentifier/t:objectName}" width="80%"></img>
+                <p><a href="https://projectmirador.org/embed/?iiif-content={//t:relation[@ref='manifest']/@active}">View in Mirador</a></p>
+            </div>
+        </xsl:if>
+        
+    </xsl:template>
     <!-- N -->
     <xsl:template match="t:note">
         <xsl:variable name="xmlid" select="@xml:id"/>
