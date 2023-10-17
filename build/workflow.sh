@@ -1,4 +1,4 @@
-GITHUB_ORG="VandyVRC"
+GITHUB_ORG="Chinese-Monuments-WG"
 GITHUB_REPOSITORY="tcadrt"
 
 rm -rf autodeploy

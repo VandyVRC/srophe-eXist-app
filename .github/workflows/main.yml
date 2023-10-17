@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'build'
+      - 'build-dev'
 
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -36,3 +36,4 @@ jobs:
           ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY}}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          DEV_ECR_REPOSITORY: ${{ secrets.AWS_ACCOUNT_ID }}
