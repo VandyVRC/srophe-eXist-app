@@ -468,8 +468,8 @@
     <xsl:template match="t:listObject">
         <xsl:if test="//t:objectIdentifier/t:idno[@type='iiif']">
             <div class="iiif-image">
-                <img src="{//t:objectIdentifier/t:idno[@type='iiif']}" alt="{//t:objectIdentifier/t:objectName}" width="80%"></img>
-                <p><a href="https://projectmirador.org/embed/?iiif-content={//t:relation[@ref='manifest']/@active}">View in Mirador</a></p>
+                <img src="{//t:objectIdentifier/t:idno[@type='iiif']}" alt="{//t:objectIdentifier/t:objectName}" width="80%"/>
+                <p><a href="https://projectmirador.org/embed/?iiif-content={//t:relation[@ref='manifest']/@active}">View annotations in Mirador</a></p>
             </div>
         </xsl:if>
         
