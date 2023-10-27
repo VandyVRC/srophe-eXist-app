@@ -1,4 +1,4 @@
-GITHUB_ORG="VandyVRC"
+GITHUB_ORG="Chinese-Monuments-WG"
 GITHUB_REPOSITORY="tcadrt"
 
 ### CREATE NECESSARY CONFIG FOR THE BUILD, AND POPULATE VERSION AND PACKAGE_NAME
@@ -32,7 +32,7 @@ ant
 echo "Ran app build successfully"
 
 echo "Fetching the data repository to build a data xar"
-git clone https://github.com/$GITHUB_ORG/$GITHUB_REPOSITORY --branch development --single-branch
+git clone https://github.com/$GITHUB_ORG/$GITHUB_REPOSITORY --branch master --single-branch
 
 cd $GITHUB_REPOSITORY
 ### CREATE NECESSARY CONFIG FOR THE BUILD, AND POPULATE VERSION AND PACKAGE_NAME
