@@ -32,7 +32,7 @@ jobs:
           build/workflow.sh
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          ADMIN_PASSWORD: ${{secrets.DEV_ADMIN_PASSWORD}}
-          ECR_REPOSITORY: ${{secrets.DEV_ECR_REPOSITORY}}
+          DEV_ADMIN_PASSWORD: ${{secrets.DEV_ADMIN_PASSWORD}}
+          DEV_ECR_REPOSITORY: ${{secrets.DEV_ECR_REPOSITORY}}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
