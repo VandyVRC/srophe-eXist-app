@@ -63,11 +63,11 @@ rm -rf $GITHUB_REPOSITORY
 
 ### BUILD DOCKER WITH THE APPLICATION AND DATA XAR FILE
 echo "Building docker file"
-docker build -t "$PACKAGE_NAME:$VERSION" --build-arg ADMIN_PASSWORD="$DEV_ADMIN_PASSWORD" --no-cache .
-echo docker build -t "$PACKAGE_NAME:$VERSION" --build-arg ADMIN_PASSWORD="$DEV_ADMIN_PASSWORD" --no-cache .
+docker build -t "$PACKAGE_NAME:$VERSION" --build-arg ADMIN_PASSWORD="$ADMIN_PASSWORD" --no-cache .
+echo docker build -t "$PACKAGE_NAME:$VERSION" --build-arg ADMIN_PASSWORD="$ADMIN_PASSWORD" --no-cache .
 echo "Built successfully"
 
-DOCKER_URL=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$DEV_ECR_REPOSITORY
+DOCKER_URL=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY
 :latest
 
 ### UPLOAD TO ECR
