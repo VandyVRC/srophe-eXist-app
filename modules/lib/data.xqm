@@ -146,7 +146,7 @@ declare function data:get-records($collection as xs:string*, $element as xs:stri
  : Build a search XPath based on search parameters. 
  : Add sort options. 
 :)
-declare function data:search($collection as xs:string*, $queryString as xs:string?, $sort-element as xs:string*) {     
+declare function data:search($collection as xs:string*, $queryString as xs:string?, $sort-element as xs:string?) {     
     let $eval-string := if($queryString != '') then $queryString 
                         else concat(data:build-collection-path($collection), data:create-query($collection),slider:date-filter(()))
     let $hits :=
@@ -155,9 +155,9 @@ declare function data:search($collection as xs:string*, $queryString as xs:strin
             else util:eval($eval-string)//tei:body[ft:query(., (),sf:facet-query())]           
     let $sort := 
         if(request:get-parameter('sort', '') != '') then request:get-parameter('sort', '') 
-        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')[1]
-        else if(request:get-parameter('element', '') != '') then request:get-parameter('element', '')[1]
-        else if($sort-element != '') then $sort-element[1]
+        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')
+        else if(request:get-parameter('element', '') != '') then request:get-parameter('element', '')
+        else if($sort-element != '') then $sort-element
         else ()  
     for $hit in $hits
     let $s :=
@@ -362,13 +362,14 @@ declare function data:dynamic-paths($search-config as xs:string?){
  : General keyword anywhere search function 
 :)
 declare function data:keyword-search(){
-    if(request:get-parameter('keyword', '') != '') then 
-        for $query in request:get-parameter('keyword', '') 
-        return concat("[ft:query(descendant::tei:body,'",data:clean-string($query),"',data:search-options()) or ft:query(descendant::tei:teiHeader,'",data:clean-string($query),"',data:search-options())]")
-    else if(request:get-parameter('q', '') != '') then 
-        for $query in request:get-parameter('q', '') 
-        return concat("[ft:query(descendant::tei:body,'",data:clean-string($query),"',data:search-options()) or ft:query(descendant::tei:teiHeader,'",data:clean-string($query),"',data:search-options())]")
-    else ()
+    let $query :=   if(request:get-parameter('keyword', '') != '') then request:get-parameter('keyword', '')
+                    else if(request:get-parameter('q', '') != '') then request:get-parameter('q', '')
+                    else ()
+    return 
+        if($query != '') then
+            for $q in $query 
+            return concat("[ft:query(descendant-or-self::tei:TEI,'",data:clean-string($query),"',data:search-options())]")
+        else ()
 };
 
 (:~

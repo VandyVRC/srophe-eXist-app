@@ -46,6 +46,7 @@ declare function sf:build-index(){
                 <field name="title" expression="sf:field(descendant-or-self::tei:body,'title')"/>
                 <field name="author" expression="sf:field(descendant-or-self::tei:body, 'author')"/>
             </text>
+            <text qname="tei:TEI"/>
             <text qname="tei:fileDesc"/>
             <text qname="tei:biblStruct"/>
             <text qname="tei:publisher"/>
@@ -443,6 +444,7 @@ declare function sf:facet-query() {
         }
     ))
 };
+
 
 (:~
  : Adds type casting when type is specified facet:facet:group-by/@type
