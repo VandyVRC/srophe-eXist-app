@@ -45,8 +45,8 @@ declare variable $search:perpage {
 declare %templates:wrap function search:search-data($node as node(), $model as map(*), $collection as xs:string?, $sort-element as xs:string?){
     let $queryExpr := search:query-string($collection)     
     let $hits := if($queryExpr != '') then 
-                     data:search($collection, $queryExpr,$sort-element)
-                 else data:search($collection, '',$sort-element)
+                     data:search($collection, $queryExpr,$sort-element[1])
+                 else data:search($collection, '',$sort-element[1])
     let $sites := for $h in $hits[.//tei:place[@type='site']]
                   let $s := ft:field($h, "title")[1]                
                   order by $s[1] collation 'http://www.w3.org/2013/collation/UCA'

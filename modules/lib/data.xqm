@@ -107,7 +107,7 @@ declare function data:get-records($collection as xs:string*, $element as xs:stri
     let $element := data:element($element)
     let $sort := 
         if(request:get-parameter('sort', '') != '') then request:get-parameter('sort', '') 
-        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')
+        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')[1]
         else ()     
     let $eval-string := concat(data:build-collection-path($collection),
                 facet:facet-filter(global:facet-definition-file($collection)),
@@ -155,9 +155,9 @@ declare function data:search($collection as xs:string*, $queryString as xs:strin
             else util:eval($eval-string)//tei:body[ft:query(., (),sf:facet-query())]           
     let $sort := 
         if(request:get-parameter('sort', '') != '') then request:get-parameter('sort', '') 
-        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')
-        else if(request:get-parameter('element', '') != '') then request:get-parameter('element', '')
-        else if($sort-element != '') then $sort-element
+        else if(request:get-parameter('sort-element', '') != '') then request:get-parameter('sort-element', '')[1]
+        else if(request:get-parameter('element', '') != '') then request:get-parameter('element', '')[1]
+        else if($sort-element != '') then $sort-element[1]
         else ()  
     for $hit in $hits
     let $s :=
