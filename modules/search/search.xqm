@@ -42,11 +42,12 @@ declare variable $search:perpage {
  : Search results stored in map for use by other HTML display functions
  : Updated for Architectura Sinica to display full list if no search terms
 :)
-declare %templates:wrap function search:search-data($node as node(), $model as map(*), $collection as xs:string?, $sort-element as xs:string?){
+declare %templates:wrap function search:search-data($node as node(), $model as map(*), $collection as xs:string?, $sort-element as xs:string*){
+    let $sort := $sort-element[1]
     let $queryExpr := search:query-string($collection)     
     let $hits := if($queryExpr != '') then 
-                     data:search($collection, $queryExpr,$sort-element[1])
-                 else data:search($collection, '',$sort-element[1])
+                     data:search($collection, $queryExpr,$sort)
+                 else data:search($collection, '',$sort)
     let $sites := for $h in $hits[.//tei:place[@type='site']]
                   let $s := ft:field($h, "title")[1]                
                   order by $s[1] collation 'http://www.w3.org/2013/collation/UCA'
