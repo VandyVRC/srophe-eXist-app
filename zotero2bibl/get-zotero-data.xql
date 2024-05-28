@@ -50,11 +50,14 @@ declare function local:process-records($record as item()?, $format as xs:string?
     let $new-record := zotero2tei:build-new-record($record, $idNumber, $format)
     return 
         if($idNumber != '') then 
-            try {xmldb:store($data-dir, xmldb:encode-uri($file-name), $new-record)} catch *{
+            try {(
+                xmldb:store($data-dir, xmldb:encode-uri($file-name), $new-record)(:,
+                gitcommit:run-commit( $new-record, concat('data/bibl/tei/',$file-name), 'Test zotero commit','67'):)
+                )} catch *{
                 <response status="fail">
                     <message>Failed to add resource {$file-name}: {concat($err:code, ": ", $err:description), console:log(concat($err:code, ": ", $err:description))}</message>
                 </response>
-            } 
+                } 
         else ()  
 };
 
