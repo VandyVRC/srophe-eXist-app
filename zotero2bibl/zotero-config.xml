@@ -1,7 +1,7 @@
 <zotero-config>
     <!-- Used by get-zotero-data.pp.xql-->
     <groupid>2267085</groupid>
-    <last-modified-version>6444</last-modified-version>
+    <last-modified-version>6535</last-modified-version>
     <!-- format json or tei -->
     <format>json</format>
     <data-dir>/db/apps/tcadrt-data/data/bibl/tei</data-dir>
