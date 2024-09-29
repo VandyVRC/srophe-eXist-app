@@ -63,8 +63,8 @@ return
         <type>Feature</type>
         <geometry>
             <type>Point</type>
-            <coordinates json:literal="true">{tokenize($coords,' ')[2]}</coordinates>
-            <coordinates json:literal="true">{tokenize($coords,' ')[1]}</coordinates>
+            <coordinates json:literal="true">{normalize-space(tokenize($coords,' ')[2])}</coordinates>
+            <coordinates json:literal="true">{normalize-space(tokenize($coords,' ')[1])}</coordinates>
         </geometry>
         <properties>
             <uri>{replace(replace($id,$config:base-uri,$config:nav-base),'/tei','')}</uri>
