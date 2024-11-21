@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Committee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            color: #800000;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            width: 500px;
+            height: 3px;
+            background-color: #800000;
+            margin: 8px auto 0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .member-card {
+            width: 250px;
+            text-align: center;
+            background-color: #fffdfd;
+            padding: 15px;
+            border: 1px solid #e4e3e3;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 4px;
+            max-width: 100%;
+            word-wrap: break-word;
+            line-height: 1.2em;
+        }
+
+        .homepage {
+            color: #333;
+            font-size: 1.3em;
+            text-decoration: underline;
+            font-style: italic;
+        }
+
+        .homepage:hover {
+            color: #800000;
+        }
+
+        .section-wrapper {
+            background: url('resources/images/Web_Photo_Editor.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 40px 0;
+        }
+
+        .section {
+            margin: 0 auto 40px;
+            background-color: rgba(255, 255, 255);
+            /* Transparent background for the cards */
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .section h2 {
+            color: #800000;
+            font-weight: 700;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p,
+        .section ul {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        .footer {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-top: 5px solid #800000;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .footer a {
+            color: #800000;
+            text-decoration: underline;
+        }
+
+        .footer a:hover {
+            color: #333;
+        }
+
+        ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        }
+
+        ul li {
+        margin-bottom: 15px; /* Adds space after each bullet point */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">Executive Committee</div>
+
+        <!-- Gallery of Members -->
+        <div class="gallery">
+            <div class="member-card">
+                <img src="images/profile-pictures/aurelia_campbell.png" alt="Aurelia Campbell Headshot">
+                <div class="name">Aurelia Campbell 金田</div>
+                <a href="https://www.bc.edu/bc-web/schools/morrissey/departments/art/people/faculty-directory/aurelia-campbell.html"
+                    class="homepage" target="_blank">Academic Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/zhuge_jing.png" alt="Zhuge Jing Headshot">
+                <div class="name">Zhuge Jing 诸葛净</div>
+                <a href="https://arch.seu.edu.cn/jz_en/2019/1113/c41172a410255/page.htm" class="homepage"
+                    target="_blank">Academic Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/tracy_miller.png" alt="Tracy Miller Headshot">
+                <div class="name">Tracy Miller</div>
+                <a href="https://my.vanderbilt.edu/tracymiller/" class="homepage" target="_blank">Academic Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/lala_zuo.png" alt="Lala Zuo Headshot">
+                <div class="name">Lala Zuo 左拉拉</div>
+                <a href="https://shanghai.nyu.edu/academics/faculty/directory/lala-zuo" class="homepage"
+                    target="_blank">Academic Homepage</a>
+            </div>
+        </div>
+
+        <!-- Section Wrapper with Background -->
+        <div class="section-wrapper">
+            <!-- Purpose & Mission Section -->
+            <div class="section">
+                <h2>Purpose & Mission</h2>
+                <p>The Architectura Sinica Executive Committee is dedicated to advancing the study and accessibility of Traditional
+                    Chinese Architecture through innovative digital resources and collaborative research. The committee’s mission is
+                    to guide the development of a comprehensive, public research portal that supports scholarly exploration and
+                    engagement with China’s architectural heritage.</p>
+                <p>Currently in active development, Architectura Sinica is designed to be a public, browser-based research portal
+                    for the study of China's traditional architecture.</p>
+                <p>When complete, the site will consist of four parts, each intended to support further research and to be enriched
+                    by the contributions of others:</p>
+                <ul>
+                    <li><b>Dynamic Site Archive:</b> A searchable database of historic monuments, both larger sites and individual
+                        structures, searchable by name of site (ancient and modern) and by technical terminology used to describe
+                        individual elements of single buildings. Search terms will be in Chinese, pinyin Romanization of modern
+                        Mandarin, and English translation. The archive will be fully integrated with a mapping tool that will allow
+                        search results to be located on a map of modern China using public-domain base maps. This will be linked to
+                        the photo archive to facilitate viewing of search results through the map interface. Map output will be
+                        available in digital and analog forms for peer-reviewed publication.</li>
+            
+                    <li><b>Encyclopedic Dictionary:</b> A thesaurus of technical terminology used to describe Traditional Chinese
+                        Architecture. Most entries are the product of the ATTCAT (The Annotation and Translation of Traditional
+                        Chinese Architectural Terminology) Project, an international team of students and scholars who meet annually
+                        to research individual terms related to Traditional Chinese Architecture and collate previous translations.
+                        ATTCAT workshops are led by Chen Wei 陳薇, Zhuge Jing 諸葛净, Zuo Lala 左拉拉, and Tracy Miller 梅晨曦, and are
+                        generously sponsored by Southeast University School of Architecture in Nanjing 南京東南大學建築學院 and, since 2021,
+                        NYU Shanghai. For a full list of individual participants, please follow links for the appropriate year:
+                        2018; 2019; 2021; 2022; 2023; 2024. Beginning in the Spring of 2021, entries were also created by the
+                        Chinese Monuments Workshop, a collaboration of faculty, master’s students, and undergraduates at NYU
+                        Shanghai, Southeast University, and Vanderbilt University. More on the 2021 workshop can be found following
+                        this link.</li>
+            
+                    <li><b>Bibliography:</b> A bibliography of sources on Traditional Chinese Architecture. The focus of this
+                        bibliography will be sources used in individual entries, but additional sources on the history and
+                        development of the architectural tradition of China will also be included. Contributions to this
+                        bibliography are welcome! If you would like to contribute a source, please contact Tracy Miller.</li>
+                </ul>
+            </div>
+
+
+
+            <!-- ATTCAT Project Section -->
+            <div class="section">
+                <h2>The ATTCAT Project</h2>
+                <p>The Annotation and Translation of Traditional Chinese Architectural Terminology (ATTCAT) project is
+                    led by
+                    an international team of students and scholars. It focuses on researching individual terms and
+                    collating
+                    previous translations. The project is supported by Southeast University School of Architecture and
+                    NYU
+                    Shanghai since 2021.</p>
+                <p>For more details, follow the links for the respective years of the project: 2018, 2019, 2021, 2022,
+                    2023,
+                    and 2024.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Architectura Sinica. This work is licensed under a <a
+                href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0
+                Unported License</a>.<br>
+            Copyright Vanderbilt University and the Contributor(s), 2014.</p>
+    </div>
+
+</body>
+
+</html>

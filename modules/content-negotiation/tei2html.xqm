@@ -188,6 +188,60 @@ declare function tei2html:summary-view($nodes as node()*, $lang as xs:string?, $
         </div>   
 };
 
+
+
+(:
+ : An extra summary view function for the DSA page formatting
+:)
+declare function tei2html:dsa-summary-view($nodes as node()*, $lang as xs:string?, $id as xs:string?) as item()* {
+    let $id := if($id) then 
+                    if(ends-with($id,'/tei')) then
+                        replace($id,'/tei','')
+                    else $id 
+                else replace($nodes//tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:idno[@type='URL'],'/tei','')
+    let $title := 
+                if($nodes/descendant::tei:entryFree/tei:term[@xml:lang='zh-latn-pinyin']) then 
+                    ($nodes/descendant::tei:entryFree/tei:term[@xml:lang='zh-latn-pinyin'][not(@type='alternate')][1]/text(),
+                    if($nodes/descendant::tei:entryFree/tei:term[@xml:lang='zh-Hant']) then 
+                       (' ', <span xml:lang="zh-Hant"> {$nodes/descendant::tei:entryFree/tei:term[@xml:lang='zh-Hant'][1]/text()}</span>)
+                    else ()
+                    )
+                else tei2html:tei2html($nodes/descendant::tei:titleStmt/tei:title[1])
+    return 
+        <div class="short-rec-view">
+            <!--<div>{string($nodes/@sort)}</div>-->
+            {if(contains($id,'/image/')) then
+                <img src="{$nodes//tei:idno[@type='thumbnail']}"/>
+            else ()}
+            <a href="{replace($id,$config:base-uri,$config:nav-base)}" dir="ltr" style="color: black; text-decoration: underline; font-family: 'Jost', sans-serif">{$title}</a>
+            {if($nodes/descendant::tei:entryFree) then 
+                concat(' (',replace(string($nodes/descendant::tei:entryFree/@type),'-',' '),')')
+             else if(contains($id,'/bibl/')) then 
+                if($nodes/descendant::tei:bibl[@type="formatted"][@subtype="citation"]) then 
+                  <span class="results-list-desc desc" dir="ltr" lang="en">{
+                    tei2html:tei2html($nodes/descendant::tei:bibl[@type="formatted"][@subtype="citation"])
+                    }</span>  
+                else 
+                <span class="results-list-desc desc" dir="ltr" lang="en">{
+                    bibl2html:citation($nodes/descendant::tei:biblStruct)
+                }</span>
+             else if($nodes/descendant-or-self::tei:desc) then 
+                for $abstract in $nodes/descendant-or-self::tei:desc[1]
+                let $string := string-join($abstract/descendant-or-self::*/text(),' ')
+                let $blurb := 
+                    if(count(tokenize($string, '\W+')[. != '']) gt 25) then  
+                        concat(string-join(for $w in tokenize($string, '\W+')[position() lt 25]
+                        return $w,' '),'...')
+                     else $string 
+                return 
+                    <span class="results-list-desc desc" dir="ltr" lang="en">{
+                        if($abstract/descendant-or-self::tei:quote) then concat('"',normalize-space($blurb),'"')
+                        else $blurb
+                    }</span>
+            else()}
+        </div>   
+};
+
 declare function tei2html:summary-view($nodes as node()*) as item()* {
     let $id := replace($nodes/descendant::tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:idno[@type='URI'],'/tei','')
     let $title := 

@@ -1,61 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
-    <div class="padding-top">   
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude" data-template="templates:surround"
+    data-template-with="templates/page.html" data-template-at="content">
+    <div class="padding-top" style="display: flex; margin-top: 0;">
         <div data-template="search:search-data" data-template-collection="keywords" data-template-sort-element="title">
-            <form method="get" action="terminology.html" class="center-block form-horizontal indent" role="form" style="margin:0; padding:2em 1em; background-color:#F7F7F9;">  
-            <h1 class="search-header indent">Thesaurus of Architectural Terminology 
-                 <small class="pull-right" style="margin-right:2em;">
-                    (<a class="togglelink text-info" data-toggle="collapse" data-target="#showSearch" href="#showSearch" data-text-swap="+ Show"> - Hide </a>)
-                </small>
-                </h1>
-            <div class="row collapse in" id="showSearch">
-                <div class="col-md-7 col-sm-offset-1">
-                    <!-- Keyword -->
-                    <div class="form-group">
-                        <label for="q" class="col-sm-2 col-md-3  control-label">Keywords: <span class="glyphicon glyphicon-question-sign text-info moreInfo" aria-hidden="true" data-toggle="tooltip" title="Search any text in a glossary record."/>
-                        </label>
-                        <div class="col-sm-10 col-md-9 ">    
-                            <input type="text" id="qs" name="q" class="form-control keyboard"/>
+            <!-- Sidebar with red background -->
+            <div class="col-md-3 sidebar"
+                style="background-color: #702020; padding: 20px; height: 100vh; position: fixed; color: white;">
+                <h1 class="terminology-title"
+                    style="color: white; font-size: 28px; margin-bottom: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    Terminology</h1>
+
+                <!-- Search Form -->
+                <div class="search-container" style="margin-bottom: 30px;">
+                    <form method="get" action="terminology.html" role="form">
+                        <div class="form-group">
+                            <label for="qs" style="color: white;">Keywords</label>
+                            <input type="text" id="qs" name="q" class="form-control keyboard"
+                                style="width: 100%; border: none; border-radius: 4px; margin-bottom: 10px;" />
                         </div>
-                    </div>
-                    <!-- Place Name-->
-                    <div class="form-group">
-                        <label for="term" class="col-sm-2 col-md-3  control-label">Architectural Feature: 
-                            <span class="glyphicon glyphicon-question-sign text-info moreInfo" aria-hidden="true" data-toggle="tooltip" title="Restrict search to architectural feature names, includes English, Pinyin and Chinese."/>
-                        </label>
-                        <div class="col-sm-10 col-md-9 ">   
-                            <input type="text" id="term" name="term" class="form-control keyboard"/>
+                        <div class="form-group">
+                            <label for="term" style="color: white;">Architectural Feature</label>
+                            <input type="text" id="term" name="term" class="form-control keyboard"
+                                style="width: 100%; border: none; border-radius: 4px; margin-bottom: 10px;" />
                         </div>
-                    </div>
-                    <i id="searchSpinner" class="fa fa-spinner fa-spin fa-lg"/>
-                    <div class="pull-right">
-                        <button type="submit" class="btn btn-success">Search</button> 
-                        <button type="reset" class="btn btn-info">Clear</button>
+                        <button type="submit" class="btn btn-success btn-block"
+                            style="background-color: #4CAF50; border: none;">Search</button>
+                        <button type="reset" class="btn btn-info btn-block"
+                            style="margin-top: 10px; border: none;">Clear</button>
+                    </form>
+                </div>
+
+                <!-- Dynamic Categories with Improved Style -->
+                <div id="category-list" style="color: white; margin-top: 5px;">
+                    <div data-template="app:display-facets" data-template-collection="keywords"
+                        data-template-facets="facet-def.xml" style="margin-top: 10px;">
+                        <!-- Styling for categories -->
+                        <style>
+                            #category-list h4 {
+                                color: white;
+                                font-weight: bold;
+                                margin-bottom: 15px;
+                            }
+
+                            #category-list a {
+                                color: rgba(255, 255, 255, 0.9);
+                                font-size: 15px;
+                                padding: 10px 15px;
+                                text-decoration: none;
+                                display: block;
+                                margin: 6px 0;
+                                background-color: rgba(255, 255, 255, 0.15);
+                                border-radius: 8px;
+                                transition: background-color 0.3s, color 0.3s;
+                                font-weight: 500;
+                            }
+
+                            #category-list a:hover {
+                                background-color: rgba(255, 255, 255, 0.3);
+                                color: #fff;
+                            }
+
+                            #category-list .category-item {
+                                margin-top: 10px;
+                            }
+                        </style>
                     </div>
                 </div>
-            </div>        
-        </form>
-            <br/>
-            <div id="search-results-panel">
-            <div data-template="app:pageination" data-template-search-string="yes" data-template-collection="keywords" data-template-sort-options="relevance,title"/>
-            <div class="row">
-                <div class="col-md-4">
-                    <!--
-                    <div class="slider-container">
-                        <div id="slider" data-template="app:display-slider"/>
-                    </div>
-                    -->
-                    <div data-template="app:display-facets" data-template-collection="keywords" data-template-facets="facet-def.xml"/>
-                </div>
-                <div class="col-md-8">
-                    <br/>
-                    <div data-template="search:show-hits" data-template-collection="keywords"/>
-                    <div class="page-bottom">
-                        <div data-template="app:pageination" data-template-collection="keywords"/>
+            </div>
+
+            <!-- Main content area for results with padding and width adjustments -->
+            <div class="col-md-9 main-content" style="margin-left: 70%; padding: 40px 20px 20px; width: 200%;"> <!-- Updated margin and width -->
+                <div id="search-results-panel" style="width: 100%;"> <!-- Extend results to full width -->
+                    <div data-template="app:pageination" data-template-search-string="yes"
+                        data-template-collection="keywords" data-template-sort-options="relevance,title"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div data-template="search:show-hits" data-template-collection="keywords"
+                                style="width: 100%; padding-left: 10px; padding-right: 10px; line-height: 1.5em;" /> <!-- Added padding to separate result number and title -->
+                            <div class="page-bottom">
+                                <div data-template="app:pageination" data-template-collection="keywords" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
+
+    <style>
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #702020;
+            min-height: calc(100vh - 60px);
+            padding: 20px;
+            position: fixed;
+            width: 25%;
+            overflow-y: auto;
+            z-index: 1;
+        }
+
+        .terminology-title {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 40px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        /* Search Form Styles */
+        .search-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-container label {
+            color: white;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .search-container input.keyboard {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* Dynamic Category Styles */
+        #category-list h4 {
+            color: white;
+        }
+
+        #category-list a {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 10px;
+            display: block;
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #category-list a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 10%;
+            padding: 20px 30px;
+        }
+
+        /* Results Styles */
+        .record {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .badge {
+            background-color: #888;
+            margin-right: 10px;
+        }
+
+        .btn-success {
+            background-color: #4CAF50;
+            border: none;
+            padding: 10px;
+            font-weight: 500;
+        }
+
+        .btn-success:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .terminology-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Pagination and Sort Controls */
+        .alpha-pages {
+            background: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .pagination {
+            margin: 0;
+        }
+
+        .dropdown-menu {
+            min-width: 100px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Toggle subcategories
+            $('.category-header').click(function (e) {
+                e.preventDefault();
+                $(this).siblings('.subcategory-list').slideToggle(200);
+
+                // Toggle arrow
+                var text = $(this).text();
+                if (text.startsWith('▾')) {
+                    $(this).text(text.replace('▾', '▸'));
+                } else {
+                    $(this).text(text.replace('▸', '▾'));
+                }
+            });
+
+            // Show active category's subcategories
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('facet-searchCategory')) {
+                let category = urlParams.get('facet-searchCategory');
+                $(`a[href*="${category}"]`).closest('.category-item').find('.subcategory-list').show();
+            }
+        });
+    </script>
 </div>

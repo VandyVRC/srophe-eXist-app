@@ -3,9 +3,12 @@
  * Deep Red for nav border: 771210
  * Darker red for text: 501A1A 
  */
-   
+
+ 
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+
 /* Main content blocks */
-body {font-family: arial, sans-serif; background-color:#fff; }
+body {font-family: Jost, arial, sans-serif; background-color:#fff; }
 #main { padding: 0; background-color:#FFFFF; }
 #content{background-color:#FFFFFF; padding-top: 50px;}
 .record {margin:0 2em; border-bottom:1px dotted #eee; padding:.25em}
@@ -90,11 +93,13 @@ body {font-family: arial, sans-serif; background-color:#fff; }
 
 h4.slider, #content h1 {
  text-transform: uppercase;
-  color:#333;
-
+  color:black;
+  font-weight:bold;
+  font-size:30px;
 }
 
-.facet-grp h4, .facet-title {
+.facet-grp h4 /*, .facet-title*/ 
+{
   margin-top:1.5em;
   text-transform: uppercase;
   font-weight:500;
@@ -103,8 +108,25 @@ h4.slider, #content h1 {
   display:block;
 }
 
+.facet-title {
+  font-size: 30px;/*16px;*/
+  /*font-weight: bold;*/
+  color: #FFFFFF;
+  /*text-transform: uppercase;*/
+  /*margin-bottom: 10px;*/
+  margin-top:20px;
+  border-bottom: 1px solid #FFFFFF;
+  padding-bottom: 5px;
+  display: block;
+}
+.facet-list {
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
 .facet-list a {
-  border-color:white !important;
+  /*border-color:white !important;*/
+  border:none;
   padding:.35em;
   /*color:#4d7775;*/
 }
@@ -276,12 +298,12 @@ footer a, footer a:hover {color:#333;text-decoration: underline;}
 .banner {font-size: 24px; color:white; background-color:#456889; margin:0 0 1em 0; padding:.5em 1em;; border-bottom:4px solid #456889;}
 
 /* Typography */
-h1 {font-size:1.5em; margin:.25em 0 .25em 0; color:#456889; font-weight:500;}
+h1 {font-size:1.7em; margin:.25em 0 .25em 0; color:#456889; font-weight:bold;}
 h2 {font-size: 1.25em; margin:1em 0 .25em 0 padding-bottom:0; color:#501A1A; font-weight:500;}
-h3 {font-size: 1.2em; margin:1em 0 .25em 0; padding-bottom:0; color:#333; font-weight:500;  padding-bottom:0; margin-bottom:1em;}
+h3 {font-size: 1.5em; margin:1em 0 .25em 0; padding-bottom:0; color:#333; font-weight:500;  padding-bottom:0; margin-bottom:1em;}
 h3.banner-solid {color:white;}
 h3.underline {color:#999; border-bottom:3px solid #456889; padding-bottom:-.75em; margin-bottom:1em; margin-top:0;}
-h4 {font-size: 1em; margin:0 0 .25em 0; padding-bottom:0; font-weight:bold;}
+h4 {font-size: 1.5em; margin:0 0 .25em 0; padding-bottom:0; font-weight:500;}
 h3.label {
     background-color:#ccc;
     line-height: 1.2em;
@@ -293,7 +315,7 @@ h3.syr{
     margin-top:.5em;
     float:right !important;
 }
-h4 {font-size: 1em; margin-top:1em;}
+h4 {font-size: 1.5em; margin-top:1em;}
 
 .hi {background-color:yellow;}
 
@@ -339,7 +361,7 @@ td {
 .caveat, .note {font-size: .785em; font-style:italic; margin-top:-.5em; padding-top:0;}
 .teiNote {display:block;}
 .tei-state{display:block; margin:.75em 0;}
-.tei-state .tei-label{display:block; font-size: 1.2em;}
+.tei-state .tei-label{display:block; font-size: 1.5em;}
 .title {display:block; margin-bottom:1em; border:none;}
 .title h1{border-bottom:2px solid #666666; margin:3em 0 .5em 0; padding: 0 1em;}
 .title .uri{padding:0 1em; color: #999999;}
@@ -808,6 +830,61 @@ unpublished
 /* Facet styles */
 .label-facet {background-color:#eee; color:#666; font-weight:normal; margin:.25em; display:inline-block;}
 .facet-label {margin-left:.5em; display:block; text-align:left; white-space: normal;}
+
+.facet-label {
+  display: block;
+  color: #FFFFFF;
+  font-size: 20px;
+  margin: 5px 0;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 0;
+  position: relative;
+}
+.facet-label .count {
+  color: #BBBBBB;
+  font-size: 12px;
+}
+
+/* Collapsible Groups */
+.facet-title.collapsible::after {
+  content: "▼"; /* Triangle indicator for collapsible */
+  font-size: 10px;
+  color: #FFFFFF;
+  float: right;
+  margin-right: 5px;
+}
+
+/* Nested Indentation for Hierarchy */
+.facet-label.nested {
+  padding-left: 20px;
+}
+
+/* View All Button Styling */
+.facet-list .btn-info {
+  background-color: #771311;
+  text-align: center;
+  width: 100%;
+  padding: 8px 0;
+  text-transform: uppercase;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.facet-list .btn-default{
+  background-color: #771311;
+  text-indent: 25px;
+}
+.facet-list .btn-default.active{
+  background-color: white;
+  text-indent: 0px;
+}
+.facet-list .btn-default:hover{
+  color:#CCCCCC;
+}
 .facet .icon{margin-left:.25em;}
 
 /* Manuscripts */
@@ -926,8 +1003,8 @@ h4.slider {
 }
 .slider-container {
   display: block;
-  min-height: 20px;
-  padding: 1em 0;
+  /*min-height: 20px;*/
+  padding-top: 0.5em;
 }
 
 /* Breakpoint for Medium Viewport: Nav; */
@@ -1208,3 +1285,18 @@ img#arch-sinic-about {
     border:none;
     margin-left:1.5em;
     }
+
+
+.facet-display {
+      background-color: #771311; /* Dark red background */
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      font-family: 'Jost', Arial, sans-serif;
+}
+
+.facet-sidebar-title{
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 20px;
+}

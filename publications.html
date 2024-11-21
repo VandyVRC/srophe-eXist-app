@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude"
+     data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="container" style="padding-top: 20px;">
+        <h1 style="color: #702020; font-weight: bold; font-size: 32px;">Publication Announcements</h1>
+
+        <!-- ATTCAT and New Terminology Section -->
+        <div class="panel">
+            <div class="panel-heading" onclick="togglePanel('attcat-terminology')">
+                <h2>ATTCAT and New Terminology</h2>
+                <span class="arrow">&#9662;</span>
+            </div>
+            <div class="panel-body" id="attcat-terminology">
+                <!-- Content for ATTCAT and New Terminology -->
+                <p>Publication Title, Date, Place</p>
+                <p>Publication Title, Date, Place</p>
+                <p>Publication Title, Date, Place</p>
+            </div>
+        </div>
+
+        <!-- Dynamic Site Archive Section -->
+        <div class="panel">
+            <div class="panel-heading" onclick="togglePanel('dynamic-site-archive')">
+                <h2>Dynamic Site Archive</h2>
+                <span class="arrow">&#9662;</span>
+            </div>
+            <div class="panel-body" id="dynamic-site-archive">
+                <!-- Content for Dynamic Site Archive -->
+                <p><i>Publication Title</i>, Date, Place</p>
+                <p><i>Publication Title</i>, Date, Place</p>
+                <p><i>Publication Title</i>, Date, Place</p>
+            </div>
+        </div>
+
+        <!-- Getty AAT Section -->
+        <div class="panel">
+            <div class="panel-heading" onclick="togglePanel('getty-aat')">
+                <h2>Getty AAT</h2>
+                <span class="arrow">&#9662;</span>
+            </div>
+            <div class="panel-body" id="getty-aat">
+                <!-- Content for Getty AAT -->
+                <p>Publication Title, Date, Place</p>
+                <p>Publication Title, Date, Place</p>
+                <p>Publication Title, Date, Place</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #702020;
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        /* Panel Styles */
+        .panel {
+            background-color: #e0e0e0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #702020;
+            cursor: pointer;
+        }
+
+        .panel-body {
+            padding: 15px;
+            display: none;
+            font-size: 16px;
+        }
+
+        /* Arrow Style */
+        .arrow {
+            font-size: 18px;
+            color: #702020;
+            transition: transform 0.3s;
+        }
+
+        .panel-heading.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Publication Style */
+        .panel-body p {
+            font-style: italic;
+            color: black;
+            margin: 10px 0;
+        }
+    </style>
+
+    <script>
+        // JavaScript function to toggle panel visibility
+        function togglePanel(panelId) {
+            const panelBody = document.getElementById(panelId);
+            const heading = panelBody.previousElementSibling;
+            panelBody.style.display = (panelBody.style.display === "none" || panelBody.style.display === "") ? "block" : "none";
+            heading.classList.toggle("active");
+        }
+    </script>
+</div>
