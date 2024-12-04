@@ -2,23 +2,27 @@
     <div data-template="app:fix-links" class="record">
         <div class="main-content-block white">
             <div data-template="app:h1"/>
-            <div data-template="app:other-data-formats" data-template-formats="print,tei,rdf,geojson"/>
             <div class="row">
                 <!-- Column 1 -->
                 <div class="col-md-7 column1">
-                    <div data-template="app:display-featured-image"/>
+             
                     <div data-template="app:display-nodes" data-template-paths="/descendant::tei:place"/>
-                    <div data-template="app:display-related-images"/>
+   
                 </div>
                 <!-- Column 2 -->
                 <div class="col-md-5 column2">
+                   
+                    <div data-template="app:other-data-formats" data-template-formats="print,tei,rdf,geojson"/>
+                    <div data-template="app:display-featured-image"/>
                     <div class="well">
                         <div data-template="app:display-map"/>
                     </div> 
+                    <div data-template="app:display-related-images"/>
                     <div data-template="app:external-relationships" data-template-relationship-type="schema:containedInPlace" data-template-display="list-description" data-template-label="Contains artifact(s)"/>
                     <div data-template="app:internal-relationships" data-template-relationship-type="schema:containedInPlace" data-template-display="list-description" data-template-label="Contained in Place"/>
                     <div data-template="app:internal-relationships" data-template-relationship-type="dcterms:subject" data-template-display="list-description" data-template-label="Architectural Features"/>
-                    <!--
+                
+                                        <!--
                     <div class="info-btns">  
                         <button class="btn btn-default" data-toggle="modal" data-target="#feedback">Corrections/Additions?</button> 
                         <a href="#" class="btn btn-default" data-toggle="modal" data-target="#selection" data-ref="../documentation/faq.html" id="showSection">

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Committee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            color: #800000;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .header::after {
+            content: "";
+            display: block;
+            width: 500px;
+            height: 3px;
+            background-color: #800000;
+            margin: 8px auto 0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .member-card {
+            width: 200px;
+            text-align: center;
+            background-color: #fffdfd;
+            padding: 15px;
+            border: 1px solid #e4e3e3;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 4px;
+            max-width: 100%;
+            word-wrap: break-word;
+            line-height: 1.2em;
+        }
+
+        .institution {
+            font-size: 1em; 
+            font-weight: 500;
+            color: #800000; 
+            margin-top: 5px; 
+            font-style: italic;
+        }
+
+        .homepage {
+            color: #333;
+            font-size: 1em;
+            text-decoration: underline;
+            font-style: italic;
+        }
+
+        .homepage:hover {
+            color: #800000;
+        }
+
+        .section-wrapper {
+            background: url('resources/images/Web_Photo_Editor.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 40px 0;
+        }
+
+        .section {
+            margin: 0 auto 40px;
+            background-color: rgba(255, 255, 255);
+            /* Transparent background for the cards */
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .section h2 {
+            color: #800000;
+            font-weight: 700;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p,
+        .section ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        .footer {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-top: 5px solid #800000;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .footer a {
+            color: #800000;
+            text-decoration: underline;
+        }
+
+        .footer a:hover {
+            color: #333;
+        }
+
+        ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        }
+
+        ul li {
+        margin-bottom: 15px; /* Adds space after each bullet point */
+        font-size: 1.1em;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #fff;
+            background-color: #800000; /* Matches the maroon theme */
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #4d0000; /* Darker maroon on hover */
+            transform: translateY(-2px); /* Subtle lift effect */
+        }
+
+        .sponsors-section {
+            background: white;
+            padding: 20px 0;
+        }
+
+        .sponsors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .sponsors li {
+            display: inline-block; /* Make list items appear inline */
+            margin: 0 10px; /* Add space between logos */
+        }
+
+        .sponsors img {
+            height: 50px;
+            width: auto;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .sponsors img:hover {
+            opacity: 1;
+        }
+
+        .sponsors-section h3 {
+            text-align: left; /* Center the text */
+            margin: 0 auto; /* Ensure proper centering */
+            padding: 20px; /* Add spacing around the text */
+            max-width: 90%; /* Restrict the width of the text block */
+            line-height: 1.6; /* Improve readability */
+            box-sizing: border-box; /* Ensure padding doesn't affect width */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">Executive Committee</div>
+
+        <!-- Gallery of Members -->
+        <div class="gallery">
+            <div class="member-card">
+                <img src="images/profile-pictures/aurelia_campbell.png" alt="Aurelia Campbell Headshot">
+                <div class="name">Aurelia CAMPBELL 金田</div>
+                <div class="institution">Boston College</div>
+                <a href="https://www.bc.edu/bc-web/schools/morrissey/departments/art/people/faculty-directory/aurelia-campbell.html"
+                    class="homepage" target="_blank">Academic Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/zhuge_jing.png" alt="Zhuge Jing Headshot">
+                <div class="name">ZHUGE Jing 诸葛净</div>
+                <div class="institution">Southeast University</div>
+                <a href="https://arch.seu.edu.cn/jz_en/2019/1113/c41172a410255/page.htm" class="homepage" target="_blank">Academic
+                    Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/tracy_miller.png" alt="Tracy Miller Headshot">
+                <div class="name">Tracy MILLER</div>
+                <div class="institution">Vanderbilt University</div>
+                <a href="https://my.vanderbilt.edu/tracymiller/" class="homepage" target="_blank">Academic Homepage</a>
+            </div>
+            <div class="member-card">
+                <img src="images/profile-pictures/lala_zuo.png" alt="Lala Zuo Headshot">
+                <div class="name">ZUO Lala 左拉拉</div>
+                <div class="institution">NYU Shanghai</div>
+                <a href="https://shanghai.nyu.edu/academics/faculty/directory/lala-zuo" class="homepage" target="_blank">Academic
+                    Homepage</a>
+            </div>
+        </div>
+
+        <!-- Section Wrapper with Background -->
+        <div class="section-wrapper">
+            <!-- Purpose & Mission Section -->
+            <div class="section">
+                <h2>Purpose & Mission</h2>
+                <p>Publicly available since 2018, ArchitecturaSinica is the first open-access digital research tool focused on the
+                    architecture of traditional China (primarily the Medieval and Early Modern periods; ca. 3rd-17th centuries CE).</p>
+                <p>The mission of AS is to advance international teaching of and research into the globally significant architectural
+                    traditions of China. Our web portal has two primary divisions: a bilingual (Chinese/English) thesaurus of
+                    Architectural Terminology developed by the ATTCAT Project (more below), and a Dynamic Site Archive of important
+                    works of early historic Chinese architecture. DSA entries include links to terminological annotations and also
+                    include geolocation, historical descriptions, photographs, and line drawings of historic sites. The bibliography of
+                    the sources we use, including pages documenting contributions of student and faculty collaborators, is also linked
+                    to ATTCAT and DSA pages.</p>
+                <p>In combining these facets, ArchitecturaSinica provides a means to simultaneously investigate historic structures and
+                    the technical terminology used to describe them. Through the linked bibliography, AS is also designed to enhance
+                    discovery of the wealth of new scholarship being produced globally in this exciting area of research.</p>
+            </div>
+
+
+
+            <!-- ATTCAT Project Section -->
+            <div class="section">
+                <h2>The ATTCAT Project</h2>
+                <p>The ATTCAT project was established to develop the first digital thesaurus of Chinese architecture terminology in the
+                English-speaking world. Beginning in 2017, our mission is to unlock the meanings of technical terms used by builders,
+                craftsmen, and officials through both textual and visual examples. Initiated by Chen Wei 陳薇, Zhuge Jing 諸葛净and Tracy
+                Miller 梅晨曦, our annotations have been available through the AS web portal since 2018, with abbreviated entries available
+                through the Getty Art and Architecture Thesaurus. Longer AS entries include Illustrations, historical examples, and a
+                bibliography of modern and premodern sources included in order to facilitate and inspire future research. Annual ATTCAT
+                meetings are led by Professors Chen Wei, Zhuge Jing, Zuo Lala 左拉拉, and Tracy Miller and are generously sponsored by
+                Southeast University School of Architecture in Nanjing 南京東南大學建築學院 and, since 2021, NYU Shanghai.
+                </p>
+                <a href="http://localhost:8080/exist/apps/tcadrt/attcat.html" target="_blank" class="button">Learn More About ATTCAT</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sponsors Section -->
+    <div class="sponsors-section">
+        <div class="container">
+            <h3>The <em>Architectura Sinica</em> project was made possible by these institutions and sponsors:</h3>
+            <ul class="list-inline funding sponsors">
+                <li>
+                    <a href="https://www.neh.gov/" class="logo" target="_blank">
+                        <img src="/resources/images/neh-logo.png" height="75px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://mellon.org/" class="logo" target="_blank">
+                        <img src="/resources/images/mellon-logo.png" height="75px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.grahamfoundation.org/" class="logo" target="_blank">
+                        <img src="/resources/images/gf-logo.png" height="75px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://as.vanderbilt.edu/" class="logo" target="_blank">
+                        <img src="/resources/images/AandSLogo.jpg" height="70px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://as.vanderbilt.edu/historyart/" class="logo" target="_blank">
+                        <img src="/resources/images/HARTlogoNew.jpg" height="70px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.library.vanderbilt.edu/" class="logo" target="_blank">
+                        <img src="/resources/images/heard-library-logo.png" height="70px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.seu.edu.cn/" class="logo" target="_blank">
+                        <img src="/resources/images/SEUlogo1.png" height="100px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="http://arch.seu.edu.cn//" class="logo" target="_blank">
+                        <img src="/resources/images/seuarch-logo.png" height="115px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://shanghai.nyu.edu/" class="logo" target="_blank">
+                        <img src="/resources/images/NYUShanghai.jpeg" height="115px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://shanghai.nyu.edu/" class="logo" target="_blank">
+                        <img src="/resources/images/NYUShanghaiDHL2.jpg" height="115px" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.songyuan.org/" class="logo" target="_blank">
+                        <img src="/resources/images/ssycds_logo.jpg" height="70px" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Architectura Sinica. This work is licensed under a <a
+                href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons Attribution 3.0
+                Unported License</a>.<br>
+            Copyright Vanderbilt University and the Contributor(s), 2014.</p>
+    </div>
+
+</body>
+
+</html>

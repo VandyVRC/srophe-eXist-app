@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xi="http://www.w3.org/2001/XInclude"
+     data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <div class="home-page">
+        <!-- Page Title -->
+        <h1 class="main-title" style="color:white">ATTCAT: The Annotation and Translation of Traditional Chinese Architectural Terminology</h1>
+
+            <!-- Summary Panel -->
+            <div class="panel">
+                <div class="panel-heading">
+                    <h2>Summary</h2>
+                </div>
+                <div class="panel-body">
+                    <img src="$nav-base/resources/images/attcat_logo3.jpg" height="30px" alt="ATTCAT Logo" class="panel-logo-wrap"/>
+                    <p>
+                        The ATTCAT project was established to develop the first digital thesaurus of Chinese architecture terminology in the English-speaking world. Beginning in 2017, our mission is to unlock the meanings of technical terms used by builders, craftsmen, and officials through both textual and visual examples. Initiated by Chen Wei 陳薇, Zhuge Jing 諸葛净and Tracy Miller 梅晨曦, our annotations have been available through the AS web portal since 2018, with abbreviated entries available through the Getty Art and Architecture Thesaurus. Longer AS entries include Illustrations, historical examples, and a bibliography of modern and premodern sources included in order to facilitate and inspire future research. Annual ATTCAT meetings are led by Professors Chen Wei, Zhuge Jing, Zuo Lala 左拉拉, and Tracy Miller and are generously sponsored by Southeast University School of Architecture in Nanjing 南京東南大學建築學院 and, since 2021, NYU Shanghai.
+                    </p>
+                    <div class="panel-body" id="conference-highlights">
+                        <p><strong>View highlights and participants from each year's conference:</strong></p>
+                        <div class="conference-links">
+                            <a href="contributorsATTCAT2024.html" target="_blank">2024</a>
+                            <a href="contributorsATTCAT2023.html" target="_blank">2023</a>
+                            <a href="contributorsATTCAT2022.html" target="_blank">2022</a>
+                            <a href="contributorsATTCAT2021.html" target="_blank">2021</a>
+                            <a href="contributorsATTCAT2019.html" target="_blank">2019</a>
+                            <a href="contributorsATTCAT2018.html" target="_blank">2018</a>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    
+
+<style>
+
+    .home-page {
+        background-image: url('ATTCAT2023.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        padding-top: 40px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+
+    .main-title {
+        color: white;
+        font-weight: bold;
+        font-size: 36px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+        text-align: center; /* Center the text */
+        margin: 30px auto; /* Add margin for spacing */
+        max-width: 75%; /* Make the text narrower by limiting the width */
+        line-height: 1.4; /* Adjust line spacing for readability */
+    }
+
+
+
+    .panel {
+        margin: 20px auto;
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255); /* Semi-transparent panel */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 50%; 
+        padding: 15px;
+        backdrop-filter: blur(10px); 
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        max-height: 70vh;
+    }
+
+    .panel-heading {
+        padding: 15px;
+        background-color: #702020;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        border-radius: 10px;
+        
+    }
+
+    .panel-heading h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .panel-body {
+        padding: 15px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333; /* Dark text for readability */
+        background: transparent;
+        overflow: auto;
+    }
+
+    .conference-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .conference-links a {
+        color: #702020; /* Dark red for links */
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 12px;
+        border: 1px solid #702020;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .conference-links a:hover {
+        background-color: #702020;
+        color: white;
+    }
+
+    .panel-logo-wrap {
+        float: left; /* Make the image float to the left of the text */
+        margin: 0 15px 15px 0; /* Add space around the image: top, right, bottom, left */
+        max-width: 100px; /* Adjust the size of the logo */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+
+
+</style>
+
+
+    <script>
+        function togglePanel(panelId) {
+            const panelBody = document.getElementById(panelId);
+            const heading = panelBody.previousElementSibling;
+            panelBody.style.display = (panelBody.style.display === "none" || panelBody.style.display === "") ? "block" : "none";
+            heading.classList.toggle("active");
+        }
+    </script>
+</div>
